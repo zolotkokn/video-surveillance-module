@@ -28,13 +28,13 @@
 
 <h3>Примеры экранов</h3>
 
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img1.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img2.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img3.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img4.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img5.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img6.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img7.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img8.jpg" width="600 "/>
-<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/main/screenshots/video-img9.png" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img1.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img2.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img3.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img4.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img5.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img6.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img7.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img8.jpg" width="600 "/>
+<img src="https://raw.githubusercontent.com/zolotkokn/video-surveillance-module/master/screenshots/video-img9.png" width="600 "/>
 
