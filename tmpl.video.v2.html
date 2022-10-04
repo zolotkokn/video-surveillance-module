@@ -1,0 +1,293 @@
+<!-- каркас окна видео просмотра -->
+<script type="text/html" id="tmpl-carcas-video2">
+    <table class="tbl block-video2" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="video-windows-controls" colspan="2">
+                <div class="form-group pull-left" style="margin:0; padding: 0">
+                    <button class="btn-toggle-panel btn-toggle-panel-cameras  btn btn-default btn-xs" type="button" title="Список камер">
+                        <span class="fa fa-video-camera fa-lg"></span>
+                    </button>
+                    <button class="btn-toggle-panel btn-toggle-panel-grids  btn btn-default btn-xs" type="button" title="Панель раскладок">
+                        <span class="fa fa-th fa-lg"></span>
+                    </button>
+                    <button class="btn-toggle-panel btn-toggle-panel-saves  btn btn-default btn-xs" type="button" title="Панель сохранения видео-файлов">
+                        <span class="fa fa-save fa-lg"></span>
+                    </button>
+                    <button class="btn-mode-sync-cameras btn-info btn btn-default btn-xs" type="button" style="margin-left: 20px;" title="Режим: Синхронное воспроизведение камер">
+                        <span class="fa fa-caret-square-o-right fa-lg"></span>
+                    </button>
+                    <button class="btn-mode-dop-info btn btn-default btn-xs" type="button" style="margin-left: 20px;" title="Режим: отображение инфо">
+                        <span class="fa fa-exclamation-circle fa-lg"></span>
+                    </button>
+                    <button class="btn-mode-play-pause btn btn-default btn-xs" type="button" style="margin-left: 20px;" title="Играть/Пауза архив">
+                        <span class="fa fa-play fa-pause fa-lg"></span>
+                    </button>
+                </div>
+                <div class="form-group pull-left input-calendar">
+                    <div class="input-group vm-datetime">
+                        <input type="text" class="form-control input-xs" id="EdDate" placeholder="период с...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-xs" type="button"><span class="glyphicon glyphicon-calendar"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group pull-left" style="margin: 0; margin-left: 10px;">
+                    <button class="btn btn-default btn-xs tl-mode tl-day btn-mode-24h">24h</button>
+                    <button class="btn btn-default btn-xs tl-mode tl-hour btn-mode-1h">1h</button>
+                    <button class="btn btn-default btn-xs tl-mode tl-min btn-mode-1m">1m</button>
+                </div>
+
+                <div class="form-group-sm pull-right" style="margin:0; padding: 0">
+                    <div class="info-panel-save">
+                        Выделенный фрагмент видео <span class="cut-time-left">10:00</span>-<span class="cut-time-right">15:00</span>:
+                        <span class="btn-span btn-savevideo-info-panel-save">Сохранить</span>
+                        <span class="btn-span btn-hide-info-panel-save">Отмена</span>
+                    </div>
+
+                    {{ #is_cera }}
+                    <button class="btn btn-default btn-xs btn-screen-counter-in" title="Счетчик: вошел">
+                        <span class="fa fa-sign-in fa-lg"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs btn-screen-counter-out" title="Счетчик: вышел">
+                        <span class="fa fa-sign-out  fa-lg"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs btn-screen-counter-inside" title="Счетчик: внутри">
+                        <span class="fa fa-share-square fa-lg"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs btn-screen-counter-rep" title="Счетчик: вышел">
+                        <span class="fa fa-file-text-o fa-lg"></span>
+                    </button>
+                    {{ /is_cera }}
+
+                    <button class="btn-mode-archive-online  btn btn-default btn-xs" type="button" title="Режим: Архив-Онлайн">
+                        <span class="fa fa-eye fa-lg"></span>
+                    </button>
+
+                    <button class="btn-panel-save-fragment  btn btn-default btn-xs" type="button" title="Сохранить фрагмент видео">
+                        <span class="fa fa-cut fa-lg"></span>
+                    </button>
+
+                    <div class="input-group btn-speed2-video" id="cbSpeedVideo">
+                        <div class="range-slider-small">
+                            <div class="range-title">скорость</div>
+                            <input class="input-range" type="range" value="1" min="1" max="16">
+                            <span class="range-value"></span>
+                            <span class="range-hint">&nbsp;</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-remove-playercamera  btn btn-default btn-xs" type="button" title="Удалить камеру">
+                        <span class="icon-remove-cam"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs  btn-fullscreen-on">
+                        <span class="fa fa-arrows-alt fa-lg"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-video-windows" style="min-height: 100%;" height="100%" >
+                <div class="video-windows"></div>
+            </td>
+            <td class="td-dop-product-panel" style="width: 300px; display: none;" valign="top" align="left">
+                <div class="dop-product-panel" style="width: 300px; height: 100%; background: #ccc">
+                    Информация
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="video-windows-timeline" colspan="2" height="54" style="position: relative; padding: 0 10px; box-sizing: border-box;">
+                <div class="time-block">
+                    <div id="time-range">
+                        <div id="slider-range"></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td id="td-products" colspan="2" valign="top" height="16" style="padding: 0;"></td>
+        </tr>
+    </table>
+</script>
+
+<!-- панель с камерами -->
+<script type="text/html" id="tmpl-video2-panel-cameras">
+    <div class="row row-no-padding">
+        <div class="col-sm-6">
+            <h4 style="margin-top: 5px;">Список камер</h4>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-default btn-add-all-cameras pull-right btn-sm">Добавить все камеры</button>
+        </div>
+    </div>
+    <div class="row list-cameras">
+        {{ #cameras }}
+        <div class="camera" data-id="{{ pk }}" data-title="{{ fields.name }}" data-timesync="0" data-scale="{{ fields.scale }}">
+            <div>{{ fields.name }}</div>
+            <img src="{{ img }}" />
+        </div>
+        {{ /cameras }}
+    </div>
+</script>
+
+<!-- панель с сетками -->
+<script type="text/html" id="tmpl-video2-panel-grids">
+    <h4>Выбор шаблона расположения камер</h4>
+    <div class="list-video-grid">
+        {{ #grids }}
+        <div class="btn-video-grid grid" data-grid-tmpl="{{ tmpl }}" data-grid-count="{{ count }}">
+            <img src="/static/images/{{ img }}" height="60" /><br/>
+            {{ title }}
+        </div>
+        {{ /grids }}
+    </div>
+</script>
+
+<!-- каркас окна видео просмотра -->
+<script type="text/html" id="tmpl-video2-player">
+    <div class="v2-container" data-idx="{{ idx }}">
+        <div class="v2-player-arhive">
+            <video style="width: 100%; height: 100%;"></video>
+        </div>
+        <div class="v2-player-arhive-error">
+            <div>
+                Запись в данный момент времени отсутствует!<br>
+                <span>Обратитесь к администратору системы.</span><br>
+                <span class="request_error"></span>
+            </div>
+        </div>
+        <div class="v2-player-online" data-idx="{{ idx }}"></div>
+        <div class="v2-player-online-error">
+            <div>
+                Запись в данный момент времени отсутствует!<br>
+                <span>Обратитесь к администратору системы.</span>
+            </div>
+        </div>
+        <div class="v2-player-region"></div>
+        <div class="v2-player-poster">
+            <div class="poster-preload">
+                Получение онлайн данных<br>...
+            </div>
+        </div>
+        <div class="v2-player-info">
+            <div class="info-camera">
+                <b class="camera_quality"></b>  <b class="camera_title"></b>
+                <b class="camera_online glyphicon"></b>
+                <b class="camera_muted glyphicon glyphicon-volume-off"></b>
+            </div>
+            <div class="info-wrapper">
+                <div class="info-panel"></div>
+            </div>
+        </div>
+        <div class="v2-player-overlay active">
+            <div>
+                <b class="btn-add-cell-cam fa fa-plus-square fa-2x"></b>
+                <p>Добавить камеру</p>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<!-- список сохр файлов -->
+<script type="text/html" id="tmpl-list-video-saves">
+    <h4>Список сохраненных видеофрагментов</h4>
+    <div class="btn-group btn-videosave-status" role="group" _style="width: 450px; margin-top: 20px;">
+        <button data-status="all" class="btn-videosave-status btn-videosave-status-all btn btn-default active btn-xs" title="Все">Все</button>
+        <button data-status="save" class="btn-videosave-status-ok btn btn-default btn-xs" title="Сохраненные">Сохраненные</button>
+        <button data-status="error" class="btn-videosave-status-error btn btn-default btn-xs" title="Ошибки">Ошибки</button>
+        <button data-status="process" class="btn-videosave-status-process btn btn-default btn-xs" title="В процессе">В процессе</button>
+    </div>
+    <button class="btn-new-videosave btn btn-default btn-xs pull-right" type="button" title="Скачать новое видео">
+        <span class="fa fa-save fa-lg"></span> Скачать новое видео
+    </button>
+    <div class="list-video-saves" style="width: 450px; margin-top: 20px;">
+        <table class="tbl-saves" border="0">
+        </table>
+    </div>
+</script>
+
+
+<script type="text/html" id="tmpl-win-video2-saves-rec">
+    {{ #list_video_saves_rec }}
+    <tr class="td-video-save status-{{ status }}">
+        <td align="left" valign="top">
+            <span style="color: #444; font-weight: bold;">Кам-{{ camera_id }}</span>
+            <span>
+                {{ #frmt_time }}{{ starttime }}{{ /frmt_time }} -
+                {{ #frmt_time }}{{ endtime }}{{ /frmt_time }} -
+                ({{ #frmt_date }}{{ starttime }}{{ /frmt_date }})
+            </span><br>
+        </td>
+        <td align="center" valign="middle" width="20">
+
+        </td>
+        <td align="center" valign="middle" width="20">
+            {{ #needMailSend }}
+            <a aria-disabled="true" class="btn-xs" type="button" title="Отправлено на почту" style="color: #ccc;">
+                <span class="fa fa-envelope-o fa-lg"></span>
+            </a>
+            {{ /needMailSend }}
+        </td>
+        {{ #is_can_download }}
+        <td align="center" valign="middle" width="20">
+            <a href="{{ url }}" target="_blank" class="btn-upload-videosave btn btn-default btn-xs" type="button" title="Скачать">
+                <span class="fa fa-download fa-lg"></span>
+            </a>
+        </td>
+        {{ /is_can_download }}
+    </tr>
+    {{ /list_video_saves_rec }}
+</script>
+
+<!-- окно нового сохр файлов -->
+<script type="text/html" id="tmpl-win-video-save">
+    <h4>Сохранение видеофрагмента активной камеры</h4>
+    <p>Укажите время сохранения видеофрагмента</p>
+    <form class="navbar-form">
+        <div class="input-group">
+            <input type="text" class="form-control input-sm" id="EdBegin" placeholder="период с...">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-calendar"></span></button>
+            </span>
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control input-sm" id="EdEnd" placeholder="период до...">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-calendar"></span></button>
+            </span>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm btn-videofragment-save">Сохранить</button>
+        <button type="button" class="btn btn-default btn-sm btn-videofragment-cancel">Отменить</button>
+    </form>
+</script>
+
+
+<!-- check flash -->
+<script type="text/html" id="tmpl-check-flash">
+    <div style="width: 100%; height: 100%; background-color: #333333; color: #fff; padding: 10px; box-sizing: border-box;">
+        <h3 class="text-warning">Отсутствует разрешение на использование FLASH плеера</h3>
+        <p>Для продолжения работы с модулем видеонаблюдения необходимо включить разрешение на использование flash-плагина</p>
+        <p>Кликните на область ниже и далее нажмите кнопку "Разрешить", после чего сервис перезагрузится</p>
+        <object type="application/x-shockwave-flash" data="/static/images/checkflash.swf" width="320" height="240">
+        </object>
+    </div>
+</script>
+
+<!-- Enters dop info panel -->
+<script type="text/html" id="tmpl-video2-info-panel-enters">
+    <div class="video2-info-enter">
+        <div style="background: #fff; padding: 5px;">
+            <select class="cbEntersGroups" style="width: 100%">
+                {{ #entersGroups }}
+                <option value="{{ id }}">{{ name }}</option>
+                {{ /entersGroups }}
+            </select>
+            <div>на время: <span id="video2-enters-time">--</span><br /></div>
+            <div>всего входов: <span id="video2-enters-all-in" class="enter-color-in">--</span><br /></div>
+            <div>всего выходов: <span id="video2-enters-all-out" class="enter-color-out">--</span><br /></div>
+        </div>
+        <div class="data" style="overflow-y: auto; padding: 5px;"></div>
+    </div>
+</script>
+
